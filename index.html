@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function playGame() {
+            let getComputerChoice = () => ["rock", "paper", "scissors"][Math.floor(Math.random() * 3)];
+            let getHumanChoice = () => {
+                var bruh = prompt("choose rock, paper, or scissors: ");
+                return bruh.toLowerCase();
+            }
+            var humanScore, computerScore;
+            humanScore = computerScore = 0;
+            function playRound(humanChoice, computerChoice) {
+                if (humanChoice === computerChoice) {
+                    return `It's a tie! Both players chose ${computerChoice}`;
+                } else if ((humanChoice === "rock" && computerChoice === "paper") || (humanChoice === "paper" && computerChoice === "scissors") || (humanChoice === "scissors" && computerChoice === "rock")) {
+                    computerScore ++;
+                    return `Computer wins! ${computerChoice} beats ${humanChoice}!`;
+                } else {
+                    humanScore ++;
+                    return `You win! ${humanChoice} beats ${computerChoice}!`;
+                }
+            }
+            for (var i = 0; i < 5; i++) {
+                console.log(playRound(getHumanChoice(), getComputerChoice()));
+            }
+            console.log(`Your score: ${humanScore}\tComputer score: ${computerScore}`);
+            return humanScore > computerScore ? "You win!" : (humanScore == computerScore ? "It's a tie!" : "Computer Wins!")
+        }
+        console.log(playGame());
+    </script>
+</body>
+</html>
